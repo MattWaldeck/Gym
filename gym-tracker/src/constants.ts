@@ -5,7 +5,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
     name: 'Push 1 (Chest & Triceps)',
     exercises: [
       {
-        name: 'Bench Press',
+        name: 'Barbell Bench Press',
         targetSets: 4,
         targetReps: '6-8',
         targetRIR: '2-3',
@@ -76,14 +76,14 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
           'This is a primary strength and mass builder. Maintain a flat back.',
       },
       {
-        name: 'Seated Cable Rows',
+        name: 'Wide Grip Rows',
         targetSets: 4,
         targetReps: '10-12',
         targetRIR: '1-2',
         notes: 'Pull to the lower chest to emphasize lats.',
       },
       {
-        name: 'Rear Delt Flys',
+        name: 'Face Pulls/ Reverse cable Pec Deck',
         targetSets: 3,
         targetReps: '15-20',
         targetRIR: '1-2',
@@ -97,7 +97,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         notes: 'Increased volume to meet weekly targets.',
       },
       {
-        name: 'Incline Hammer Curls',
+        name: 'Hammer Curls',
         targetSets: 4,
         targetReps: '10-15',
         targetRIR: '1-2',
@@ -130,7 +130,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         notes: 'Squeeze at the top of the movement for peak contraction.',
       },
       {
-        name: 'Walking Lunges',
+        name: 'Laying leg Curls',
         targetSets: 4,
         targetReps: '12-15',
         targetRIR: '1-2',
@@ -156,7 +156,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         notes: 'The primary shoulder builder. Keep core and glutes engaged.',
       },
       {
-        name: 'Incline Dumbbell Bench',
+        name: 'Flat Dumbbell Bench',
         targetSets: 4,
         targetReps: '8-12',
         targetRIR: '1-2',
@@ -170,12 +170,12 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         notes: 'Lean forward to emphasize the chest. Add weight if needed.',
       },
       {
-        name: 'Flat DB Press',
+        name: 'Shoulder Dumbbell Press',
         targetSets: 3,
         targetReps: '10-12',
         targetRIR: '1-2',
         notes: 'Hits all three heads of the deltoid.',
-      }, // Note: Image was cut off, assuming Flat DB Press
+      },
       {
         name: 'Cable Lateral Raises',
         targetSets: 4,
@@ -204,7 +204,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
     name: 'Pull 2 (Back Thickness & Biceps)',
     exercises: [
       {
-        name: 'Kroc Rows (Single Arm DB)',
+        name: 'Rack Pulls',
         targetSets: 4,
         targetReps: '5-8',
         targetRIR: '2-3',
@@ -212,7 +212,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
           'Extremely effective but neurally fatiguing. Do not go to failure.',
       },
       {
-        name: 'Chest-Supported Rows',
+        name: 'T-bar or Chest-Supported Rows',
         targetSets: 4,
         targetReps: '8-12',
         targetRIR: '1-2',
@@ -240,7 +240,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         notes: 'Increased volume to meet weekly targets.',
       },
       {
-        name: 'Hammer Curls',
+        name: 'Preacher Curls',
         targetSets: 4,
         targetReps: '10-15',
         targetRIR: '1-2',
@@ -252,7 +252,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
     name: 'Legs 2 (Hamstring & Glute)',
     exercises: [
       {
-        name: 'Romanian Deadlift',
+        name: 'Romanian Deadlift (RDL)',
         targetSets: 4,
         targetReps: '8-12',
         targetRIR: '2-3',
