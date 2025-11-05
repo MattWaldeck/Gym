@@ -1,0 +1,201 @@
+/* A primary color for the app. Blue is energetic and looks good in dark mode. */
+:root {
+  --primary-color: #007bff;
+  --primary-color-hover: #0056b3;
+  --card-bg: #2a2a2a; /* A lighter dark for cards */
+  --input-bg: #333;
+  --border-color: #444;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0 0 1rem 0;
+  font-weight: bold;
+}
+.back-button:hover {
+  color: #fff;
+}
+
+/* === WorkoutDay.tsx Styles === */
+.exercise-card {
+  background-color: var(--card-bg);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+}
+
+/* NEW: Styles for Target Info */
+.target-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: -0.5rem 0 1rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.target-item {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.target-item strong {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* NEW: Styles for Exercise Notes */
+.exercise-notes {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #ddd;
+  background-color: var(--input-bg);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.last-perf-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #ccc;
+  background-color: var(--input-bg);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+.last-perf-note strong {
+  color: #fff;
+  font-style: normal;
+}
+
+.set-header,
+.set-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr 40px; /* Give remove button more space */
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+.set-header span {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+}
+.set-row span:first-child {
+  text-align: center;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.set-row input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: white;
+  box-sizing: border-box;
+}
+.set-row input::-webkit-outer-spin-button,
+.set-row input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.add-set-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #ccc;
+}
+.add-set-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.remove-set-btn {
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: #aaa;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: bold;
+}
+.remove-set-btn:hover {
+  background-color: #c13a3a;
+  color: white;
+  border-color: #c13a3a;
+}
+
+.finish-workout-btn {
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.finish-workout-btn:hover {
+  background-color: var(--primary-color-hover);
+}
+
+/* === History.tsx Styles === */
+.history-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+}
+.history-controls label {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.history-controls select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: white;
+  font-weight: bold;
+}
+
+/* Recharts class for the labels on the chart */
+.recharts-text {
+  font-size: 0.8rem;
+  fill: #aaa;
+}
