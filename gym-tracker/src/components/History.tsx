@@ -17,11 +17,10 @@ interface HistoryProps {
   onBack: () => void;
 }
 
-// Define what our chart data will look like
 interface ChartDataPoint {
   date: string;
-  bestKgs: number; // Heaviest set
-  bestVolume: number; // Volume (kgs * reps) of heaviest set
+  bestKgs: number;
+  bestVolume: number;
 }
 
 export const History: React.FC<HistoryProps> = ({ onBack }) => {
@@ -29,12 +28,10 @@ export const History: React.FC<HistoryProps> = ({ onBack }) => {
   const [exerciseList, setExerciseList] = useState<string[]>([]);
   const [selectedExercise, setSelectedExercise] = useState<string>('');
 
-  // 1. Load all data on component mount
   useEffect(() => {
     const logs = getWorkoutLogs();
     setAllLogs(logs);
 
-    // Find all unique exercise names from all logs
     const allNames = new Set<string>();
     logs.forEach((log) => {
       log.exercises.forEach((ex) => {
@@ -45,13 +42,11 @@ export const History: React.FC<HistoryProps> = ({ onBack }) => {
     const sortedNames = Array.from(allNames).sort();
     setExerciseList(sortedNames);
 
-    // Set the default selected exercise
     if (sortedNames.length > 0) {
       setSelectedExercise(sortedNames[0]);
     }
-  }, []); // Empty array means this runs only once
+  }, []);
 
-  // 2. Transform the data for the chart
   const chartData = useMemo(() => {
     if (!selectedExercise) return [];
 
@@ -61,23 +56,21 @@ export const History: React.FC<HistoryProps> = ({ onBack }) => {
       const exercise = log.exercises.find((ex) => ex.name === selectedExercise);
 
       if (exercise && exercise.sets.length > 0) {
-        // Find the "best" set for that day (heaviest weight)
         const bestSet = exercise.sets.reduce(
           (max, set) => (set.kgs > max.kgs ? set : max),
           exercise.sets[0]
         );
 
         dataPoints.push({
-          date: new Date(log.date).toLocaleDateString(), // Format date for X-axis
+          date: new Date(log.date).toLocaleDateString(),
           bestKgs: bestSet.kgs,
           bestVolume: bestSet.kgs * bestSet.reps,
         });
       }
     });
 
-    // Recharts works best if data is sorted by date (though our logs are already)
     return dataPoints;
-  }, [allLogs, selectedExercise]); // Recalculate only when logs or selection change
+  }, [allLogs, selectedExercise]);
 
   return (
     <div className="history-page">
@@ -113,7 +106,6 @@ export const History: React.FC<HistoryProps> = ({ onBack }) => {
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
               <XAxis dataKey="date" stroke="#aaa" />
 
-              {/* Y-Axis for KGs */}
               <YAxis
                 yAxisId="left"
                 dataKey="bestKgs"
@@ -126,7 +118,6 @@ export const History: React.FC<HistoryProps> = ({ onBack }) => {
                 }}
               />
 
-              {/* Y-Axis for Volume */}
               <YAxis
                 yAxisId="right"
                 dataKey="bestVolume"

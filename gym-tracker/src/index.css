@@ -6,10 +6,9 @@
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #121212; /* A deeper, more common dark mode bg */
+  background-color: #121212;
 }
 
-/* Apply box-sizing to all elements for easier layout */
 *,
 *::before,
 *::after {
@@ -24,7 +23,6 @@ body {
 }
 
 #root {
-  /* This creates the mobile-first view */
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem;

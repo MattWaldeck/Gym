@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { WorkoutLog, WorkoutTemplate } from '../types';
 import { saveWorkoutLog, getLastExercisePerformance } from '../utils/storage';
-import './components.css'; // Make sure this import is here
+import './components.css';
 
 interface WorkoutDayProps {
   template: WorkoutTemplate;
@@ -10,7 +10,6 @@ interface WorkoutDayProps {
 
 const generateId = () => `id_${new Date().getTime()}_${Math.random()}`;
 
-// Helper to create an array of a specific length
 const createEmptySets = (numSets: number) => {
   return Array.from({ length: numSets }, () => ({
     id: generateId(),
@@ -24,11 +23,11 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
     id: generateId(),
     date: new Date().toISOString(),
     templateName: template.name,
-    // NEW: Pre-populate exercises based on your template's target sets!
+
     exercises: template.exercises.map((ex) => ({
       id: generateId(),
       name: ex.name,
-      sets: createEmptySets(ex.targetSets), // Creates the correct number of sets
+      sets: createEmptySets(ex.targetSets),
     })),
   });
 
@@ -40,7 +39,6 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
   ) => {
     const newWorkoutLog = JSON.parse(JSON.stringify(workoutLog)) as WorkoutLog;
 
-    // Ensure value is not negative
     const safeValue = Math.max(0, value);
 
     newWorkoutLog.exercises[exIndex].sets[setIndex][field] = safeValue;
@@ -66,7 +64,7 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
   const removeSet = (exIndex: number, setIndex: number) => {
     const newWorkoutLog = { ...workoutLog };
     const exercise = newWorkoutLog.exercises[exIndex];
-    // Allow removing sets, even if it's the last one
+
     if (exercise.sets.length > 0) {
       exercise.sets.splice(setIndex, 1);
       setWorkoutLog(newWorkoutLog);
@@ -74,7 +72,6 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
   };
 
   const handleFinishWorkout = () => {
-    // Filter out exercises that have no sets
     const finishedLog = {
       ...workoutLog,
       exercises: workoutLog.exercises.filter((ex) => ex.sets.length > 0),
@@ -93,14 +90,12 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
       <h2>{template.name}</h2>
 
       {workoutLog.exercises.map((exercise, exIndex) => {
-        // Get the matching template info for this exercise
         const templateExercise = template.exercises[exIndex];
 
         return (
           <div key={exercise.id} className="exercise-card">
             <h3>{exercise.name}</h3>
 
-            {/* NEW: Display target info */}
             <div className="target-info">
               <span className="target-item">
                 Sets: <strong>{templateExercise.targetSets}</strong>
@@ -113,10 +108,8 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
               </span>
             </div>
 
-            {/* NEW: Display notes */}
             <p className="exercise-notes">{templateExercise.notes}</p>
 
-            {/* This is the progressive overload helper! */}
             <LastPerformance exerciseName={exercise.name} />
 
             <div className="set-header">
@@ -131,7 +124,7 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
                 <span>{setIndex + 1}</span>
                 <input
                   type="number"
-                  inputMode="decimal" // Better for mobile
+                  inputMode="decimal"
                   value={set.kgs}
                   onChange={(e) =>
                     handleSetChange(
@@ -144,7 +137,7 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
                 />
                 <input
                   type="number"
-                  inputMode="numeric" // Better for mobile
+                  inputMode="numeric"
                   value={set.reps}
                   onChange={(e) =>
                     handleSetChange(
@@ -177,7 +170,6 @@ export const WorkoutDay: React.FC<WorkoutDayProps> = ({ template, onBack }) => {
   );
 };
 
-// Helper component - remains unchanged, but we'll style it
 const LastPerformance: React.FC<{ exerciseName: string }> = ({
   exerciseName,
 }) => {

@@ -224,7 +224,7 @@ export const WORKOUT_TEMPLATES: WorkoutTemplate[] = [
         targetReps: '10-12',
         targetRIR: '1-2',
         notes: 'Focus on pulling with the lat, not the bicep.',
-      }, // Note: Image was cut off
+      },
       {
         name: 'Rear Delt Deck or Bent-Over Flys',
         targetSets: 3,
